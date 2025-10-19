@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Portfólio | Fotógrafo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Fotógrafo</h1>
+            <nav>
+                <a href="/">Início</a>
+                <a href="/login">Login</a>
+                <a href="/sobre">Sobre</a>
+                <a href="/galeria">Galeria</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Galerias</h1>
+        <div class="galeria">
+            <% (galeria || []).forEach(g=> { %>
+                <figure>
+                    <a href="/galeria?id=<%= g.id_galeria %>">
+                        <img src="<%= g.capa %>" alt="<%= g.titulo %>">
+                        <figcaption>
+                            <%= g.titulo %>
+                        </figcaption>
+                    </a>
+                </figure>
+                <% }) %>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Fotógrafo Profissional</p>
+    </footer>
+</body>
+
+</html>
