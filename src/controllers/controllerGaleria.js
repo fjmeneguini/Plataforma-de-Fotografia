@@ -1,15 +1,25 @@
-// const db = require('../db');
-const { galeria } = require('../models/modelGaleria');
+const dbConnection = require('./../config/db');
+const { getEvents } = require('./../models/modelGaleria');
 
 module.exports.galeria = (app, req, res) => {
-        try {
-                res.render('galeria', { galeria: result });
-                console.log(result)
-        } catch (error) {
-                console.error(error);
-                es.status(500).send('Erro ao carregar a página inicial');
-        }
+  console.log('[Controller galeria]');
+  
+  const dbConn = dbConnection(); // mantém a estrutura original
+
+  getEvents(dbConn, (error, result) => {
+    // Validação de erro no banco
+    if (error) {
+      console.error('Erro ao buscar eventos:', error);
+      return res.status(500).send('Erro ao carregar eventos');
+    }
+
+    // Validação se não há eventos
+    if (!result || result.length === 0) {
+      console.log('Nenhum evento encontrado');
+      return res.render('galeria.ejs', { events: [] });
+    }
+
+    // Renderiza
+    return res.render('galeria.ejs', { events: result });
+  });
 };
-
-
-
