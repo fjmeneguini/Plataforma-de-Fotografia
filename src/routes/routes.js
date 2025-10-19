@@ -2,8 +2,7 @@ const { index } = require('../controllers/controllerIndex');
 const { login } = require('../controllers/controllerLogin');
 const { sobre } = require('../controllers/controllerSobre');
 const { galeria } = require('../controllers/controllerGaleria');
-const { maisDetalhes } = require('../controllers/controllerMaisDetalhes')
-
+// const { maisDetalhes } = require('../controllers/controllerMaisDetalhes') // Em Dev...
 
 module.exports = {
     index: (app) => {
@@ -26,11 +25,11 @@ module.exports = {
             galeria(app, req, res);
         });
     },
-    maisDetalhes: (app) => {
+    /* maisDetalhes: (app) => {
         app.get('/maisDetalhes', function (req, res) {
             maisDetalhes(app, req, res);
         });
-    },
+    }, */ // Em Dev...
     naoEncontrado: (app) => {
         app.use((req, res) => {
             res.status(404).render('naoEncontrado.ejs');

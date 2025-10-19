@@ -22,20 +22,25 @@
     </header>
 
     <main class="container">
-        <h1>Galerias</h1>
-        <div class="galeria">
-            <% (galeria || []).forEach(g=> { %>
-                <figure>
-                    <a href="/galeria?id=<%= g.id_galeria %>">
-                        <img src="<%= g.capa %>" alt="<%= g.titulo %>">
-                        <figcaption>
-                            <%= g.titulo %>
-                        </figcaption>
-                    </a>
-                </figure>
-                <% }) %>
+        <h1>Eventos Fotográficos</h1>
 
-        </div>
+        <% if (events && events.length> 0) { %>
+            <% for (let i=0; i < events.length; i++) { %>
+                <div class="evento-card">
+                    <h2>
+                        <%= events[i].eventName %>
+                    </h2>
+                    <p><strong>Data:</strong>
+                        <%= new Date(events[i].eventDate).toLocaleDateString('pt-BR', { timeZone: 'UTC' }) %>
+                    </p>
+                    <p>Ver Detalhes</p> <!-- até implementar a pag de mais detalhes -->
+                    <!-- <a href="/emImplementacao">Ver detalhes</a> -->
+                </div>
+                <% } %>
+                    <% } else { %>
+                        <p class="sem-eventos">Nenhum evento encontrado.</p>
+                        <% } %>
+
     </main>
 
     <footer>

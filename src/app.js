@@ -18,7 +18,7 @@ routes.index(app);
 routes.login(app);
 routes.sobre(app);
 routes.galeria(app);
-routes.maisDetalhes(app);
+// routes.maisDetalhes(app); // em dev...
 routes.naoEncontrado(app);
 
 module.exports = app;
